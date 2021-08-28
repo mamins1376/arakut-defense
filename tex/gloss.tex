@@ -1,0 +1,117 @@
+\فرمان‌جانشین{واژه‌نامه‌هاساز}{makeglossaries}
+\فرمان‌جانشین{سبک‌واژه‌نامه‌نو}{newglossarystyle}
+\فرمان‌جانشین{بگذارسبک‌واژه‌نامه}{setglossarystyle}
+\فرمان‌جانشین{چاپ‌واژه‌نامه}{printglossary}
+\فرمان‌جانشین{واژه‌نامه‌نو}{newglossary}
+
+\فرمان‌جانشین{واژه‌متن}{glsentrytext}
+\فرمان‌جانشین{واژه‌نام}{glsentryname}
+\فرمان‌جانشین{واژه}{gls}
+
+\واژه‌نامه‌نو[glg]{english}{gls}{glo}{واژه‌نامه انگلیسی به فارسی}
+\واژه‌نامه‌نو[blg]{persian}{bls}{blo}{واژه‌نامه فارسی به انگلیسی}
+\واژه‌نامه‌نو[alg]{abrr}{acr}{acn}{فهرست اختصارات}
+\واژه‌نامه‌هاساز
+
+\سبک‌واژه‌نامه‌نو{fa2en}{
+	\محیط‌ازنو{theglossary}{}{}
+	\فرمان‌ازنو*{\glsgroupheading}[1]{\زیرقسمت*{\glsgetgrouptitle{##1}}}
+	\فرمان‌ازنو*{\glossentry}[2]{\بدون‌تورفتگی\واژه‌نام{##1}\پرنقطه‌ا\واژه‌متن{##1}\بند}
+}
+
+\سبک‌واژه‌نامه‌نو{en2fa}{
+	\محیط‌ازنو{theglossary}{}{}
+	\فرمان‌ازنو*{\glsgroupheading}[1]{%
+		\شروع{متن‌چپ}\زیرقسمت*{\glsgetgrouptitle{##1}}	\پایان{متن‌چپ}}
+	\فرمان‌ازنو*{\glossentry}[2]{\بدون‌تورفتگی\واژه‌متن{##1}\پرنقطه‌ا\واژه‌نام{##1}\بند}
+}
+
+\سبک‌واژه‌نامه‌نو{abbr}{
+	\محیط‌ازنو{theglossary}{}{}
+	\فرمان‌ازنو*{\acronymname}{فهرست اختصارات}
+	\فرمان‌ازنو*{\glsgroupheading}[1]{%
+		\شروع{متن‌چپ}\زیرقسمت*{\glsgetgrouptitle{##1}}\پایان{متن‌چپ}}
+	\فرمان‌ازنو*{\glossentry}[2]{%
+		\بدون‌تورفتگی\چر{\واژه‌متن{##1}\پرنقطه‌ا\Glsentrylong{##1}}\بند}
+}
+
+\defglsentryfmt[english]{\glsgenentryfmt\ifglsused{\glslabel}{}{\glsadd{f-\glslabel}\LTRfootnote{\glsentryname{\glslabel}}}}
+
+\defglsentryfmt[acronym]{\واژه‌نام{\glslabel}\ifglsused{\glslabel}{}{\LTRfootnote{\glsentrydesc{\glslabel}}}}
+
+\newcommand{\newword}[4]{
+	\newglossaryentry{#1}{type={english},name={\lr{#2}},plural={#4},text={#3},description={}}
+	\newglossaryentry{f-#1}{type={persian},name={#3},text={\lr{#2}},description={}}
+}
+
+\newword{bt}{Bluetooth}{بلوتوث}{}
+\newword{wifi}{Wi-Fi}{وای-فای}{}
+\newword{wifi-repeater}{Wi-Fi Repeater}{تکرار کننده وای-فای}{}
+\newword{bl-sig}{Bluetooth SIG (Special Interest Group)}{گروه منافع خاص بلوتوث}{}
+\newword{firmware}{Firmware}{سفت‌افزار}{سفت‌افزار‌ها}
+\newword{iot}{Internet of Things}{اینترنت اشیاء}{}
+\newword{ip}{Internet Protocol}{پروتکل اینترنت}{}
+\newword{ipaddr}{Internet Protocol (IP) Address}{نشانی پروتکل اینترنت}{}
+\newword{cloud-computer}{Cloud Computer}{رایانشگر ابری}{}
+\newword{ai}{Artificial Intelligence}{هوش مصنوعی}{}
+\newword{ml}{Machine Learning}{یادگیری ماشین}{}
+\newword{struct-building}{Structural Building}{ساختمان ساختاری}{ساختمان‌های ساختاری}
+\newword{zigbee}{ZigBee}{زیگ‌بی}{}
+\newword{pio}{PlatformIO}{پلتفرم.آی.او}{}
+\newword{sbs}{Software Build System}{سامانه ساخت نرم‌افزار}{}
+\newword{opensource}{Open Source}{متن‌باز}{}
+\newword{arduino}{Arduino}{آردوینو}{}
+\newword{ws}{Web Socket}{وب سوکت}{}
+\newword{wapp}{Web Application}{برنامه کاربردی وب}{}
+\newword{gh}{Github}{گیت‌هاب}{}
+\newword{bitbanging}{Bit Banging}{بیت بنگینگ}{}
+\newword{buffer}{Buffer}{بافر}{بافرها}
+\newword{cache}{Cache}{کَش}{}
+\newword{preact}{Preact}{پری‌اکت}{}
+\newword{gz}{GZip}{جی‌زیپ}{}
+\newword{gplane}{Ground Plane}{صفحه زمین}{}
+\newword{fr4}{FR4}{اف.آر.۴}{}
+\newword{stub}{Stub}{زائده}{}
+\newword{dpe}{Discrete Passive Element}{عنصر غیرفعال فشرده}{عناصر غیرفعال فشرده}
+\newword{espressif}{Espressif Systems}{اسپرسیف سیستمز}{}
+\newword{uart-def}{Universal Asynchronous Receiver-Transmitter}{گیرنده-فرستنده ناهمزمان فراگیر}{}
+\newword{xtensa}{Xtensa}{اکستنسا}{}
+\newword{tensilica}{Tensilica}{تنسیلیکا}{}
+\newword{mc}{Microcontroller}{میکروکنترلر}{میکروکنترلرها}
+\newword{pll}{Phase-Locked Loop}{حلقه قفل فاز}{}
+\newword{emb}{Embedded}{نهفته}{}
+\newword{deplexer}{Deplexer}{دوسویه ساز}{}
+\newword{trs}{Transmit/Receive Switch}{کلید فرستنده/گیرنده}{}
+\newword{balun}{Balun}{بالان}{}
+\newword{coax}{Coaxial}{هم محور}{}
+\newword{ustrip}{Microstrip}{میکراستریپ}{}
+\newword{lna}{Low-Noise Amplifier}{تقویت‌کننده کم نویز}{تقویت‌کننده‌های کم نویز}
+
+\newacronym{ieee}{IEEE}{Institute of Electrical and Electronics Engineers}
+\newacronym{ism}{ISM}{Industrial, Scientific and Medical}
+\newacronym{fcc}{FCC}{Federal Communications Commission}
+\newacronym{rfid}{RFID}{Radio Frequency IDentification}
+\newacronym{scada}{SCADA}{Supervisory Control And Aata Acquisition}
+\newacronym{shf}{SHF}{Super High Frequency}
+\newacronym{uhf}{UHF}{Ultra High Frequency}
+\newacronym{osi}{OSI}{Open Systems Interconnection}
+\newacronym{wps}{WPS}{Wi-Fi Protected Setup}
+\newacronym{wep}{WEP}{Wired Equivalent Privacy}
+\newacronym{pcm}{PCM}{Pulse-Code Modulation}
+\newacronym{udp}{UDP}{User Datagram Protocol}
+\newacronym{http}{HTTP}{Hypertext Transfer Protocol}
+\newacronym{iot-acr}{IoT}{Internet of Things}
+\newacronym{uart}{UART}{Universal Asynchronous Receiver-Transmitter}
+\newacronym{dma}{DMA}{Direct Memory Access}
+\newacronym{adc}{ADC}{Analog to Digital Converter}
+\newacronym{bps}{bps}{Bits per second}
+\newacronym{gpio}{GPIO}{General Purpose Input/Output}
+\newacronym{xip}{XIP}{eXecute In Place}
+\newacronym{pcb}{PCB}{Printed Circuit Board}
+\newacronym{spi}{SPI}{Serial Peripheral Interface}
+\newacronym{sclk}{SCLK}{SPI Clock}
+\newacronym{cs}{CS}{Clock Select}
+\newacronym{mosi}{MOSI}{Master Out, Slave In}
+\newacronym{miso}{MISO}{Master In, Slave Out}
+\newacronym{qspi}{QSPI}{Quad-SPI}
+

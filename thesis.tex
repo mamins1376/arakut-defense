@@ -1,0 +1,110 @@
+\documentclass[12pt, a4paper, twoside]{report}
+
+\input{tex/common}
+
+\usepackage{geometry}
+\geometry{left=25mm, right=25mm, top=25mm, bottom=20mm}
+
+\usepackage{indentfirst}
+
+\usepackage{setspace}
+
+\usepackage{titlesec}
+
+\usepackage{xcolor}
+
+\usepackage{minted}
+\setminted{fontsize=\small,breaklines,linenos}
+
+\usepackage{scrextend}
+\changefontsizes[20pt]{14pt}
+
+\usepackage[xindy,acronym,nomain]{glossaries}
+
+\usepackage[Kashida,localise]{xepersian}
+
+\گزینش‌قلم‌متن{Nazli}
+\گزینش‌قلم‌لاتین‌متن{Liberation Serif}
+
+\تعریف‌قلم‌پارسی\قلم‌تیتر{B Titr}
+\محیط‌نو{تیتر}{\قلم‌تیتر}{}
+
+\فرمان‌جانشین{چر}{lr}
+
+\عنوان{\titlefa}
+
+\نویسنده{\authorfa}
+
+\تاریخ{\datefa}
+
+\ورودی{tex/gloss}
+
+\titleformat{\chapter}[display]
+{\فضای‌و{-3cm}\پررو\filcenter}
+{%
+   \فضای‌و{-3cm}\filcenter\اندازه‌قلم{40pt}{40pt}\قلم‌بردار{\متن‌سیاه\chaptername}
+   \متن‌سیاه{\اندازه‌قلم{40pt}{40pt}\قلم‌بردار\tartibi{chapter}}%
+}
+{50pt}
+{\اندازه‌قلم{40pt}{40pt}\قلم‌بردار\متن‌سیاه}
+[\پررو\صفحه‌پاک‬]
+
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+
+\titleformat{name=\chapter,numberless}[display]{}{}{5pt}{\بزرگ‌تر\قلم‌بردار}%
+
+\شروع{document}
+
+\شامل{tex/head}
+
+\فهرست‌مطالب
+
+\بیفزاسطرفهرست{toc}{chapter}{فهرست تصاویر}
+\فهرست‌اشکال
+
+\شامل{tex/intro}
+
+\شامل{tex/iot}
+
+\شامل{tex/argb}
+
+\شامل{tex/controller}
+
+\شامل{tex/esp}
+
+\شامل{tex/setup}
+
+\شامل{tex/wrapup}
+
+\appendix
+\فرمان‌ازنو{\chaptername}{پیوست}
+
+\شامل{tex/appendix1}
+
+\فرمان‌ازنو{\bibname}{منابع و مآخذ}
+\بیفزاسطرفهرست{toc}{chapter}{منابع و مآخذ}
+\سبک‌کتاب‌نامه{ieeetr-fa}
+\کتاب‌نامه{references}
+
+\دوستون{}
+
+\phantomsection
+\بیفزاسطرفهرست{toc}{chapter}{واژه نامه فارسی به انگلیسی}
+\بگذارسبک‌واژه‌نامه{fa2en}
+\چاپ‌واژه‌نامه[type=persian]
+
+\phantomsection
+\بیفزاسطرفهرست{toc}{chapter}{واژه نامه انگلیسی به فارسی}
+\بگذارسبک‌واژه‌نامه{en2fa}
+\چاپ‌واژه‌نامه[type=english]
+
+\phantomsection
+\بیفزاسطرفهرست{toc}{chapter}{فهرست اختصارات}
+\بگذارسبک‌واژه‌نامه{abbr}
+\چاپ‌واژه‌نامه[type=acronym]
+
+\یک‌ستون{}
+
+\ورودی{tex/tail}
+
+\پایان{document}
