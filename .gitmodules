@@ -1,3 +1,7 @@
 [submodule "espws2811"]
 	path = espws2811
 	url = https://github.com/mamins1376/espws2811.git
+
+[submodule "code"]
+	path = code
+	url = ssh://git@ngk.co.ir:222/min/nemidunam.git
