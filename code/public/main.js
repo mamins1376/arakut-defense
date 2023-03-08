@@ -63,19 +63,28 @@ class Controller {
   }
 
   send() {
+    // return if there is no need for update
     if (!this.needs_update)
       return;
     this.needs_update = false;
 
+    // read values from sliders
     const power = this.sliders.get('power');
     const yaw = this.sliders.get('yaw');
     const pitch = this.sliders.get('pitch');
 
-    const left = (Math.sqrt(1 - yaw) * power) * 127;
-    const right = (Math.sqrt(yaw) * power) * 127;
-    const back = pitch * 127;
+    // calculcate duty cycle values from inputs
+    const left = Math.sqrt(1 - yaw) * power;
+    const right = Math.sqrt(yaw) * power;
+    const back = pitch;
 
-    const motors = new Int8Array([left, right, back]);
+    // construct message buffer
+    const motors = new Uint8Array([
+      left * 256,
+      right * 256,
+      (1 + back) * 128,
+    ].map(v => Math.min(v, 255)));
+
     console.debug("motors [left, right, back]", motors);
 
     if (this.socket)

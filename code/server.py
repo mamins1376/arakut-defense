@@ -1,16 +1,17 @@
 import uasyncio
 import hashlib
 import ubinascii
-from machine import UART
+from machine import Pin, PWM
 
-
-uart = UART(1, 9600)
+motor_freq = 500
+motor_left = PWM(Pin(15), freq=motor_freq)
+motor_right = PWM(Pin(13), freq=motor_freq)
+motor_back = PWM(Pin(12), freq=motor_freq)
 
 
 class Server:
     @classmethod
     def main(cls):
-        uart.write(b'\x60\xa0\xe0')
         uasyncio.run(cls.listen())
 
     @classmethod
@@ -83,7 +84,10 @@ class Server:
             else:
                 mesg = await self.reader.readexactly(pl)
 
-            uart.write(mesg)
+            if pl == 3:
+                left, right, back = mesg
+                motor_left.duty(left << 2)
+                motor_right.duty(right << 2)
 
         await self.writer.wait_closed()
 
