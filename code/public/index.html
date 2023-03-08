@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Flight Controller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <script src="main.js" async></script>
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      text-align: center;
+      font-size: 1.6em;
+      background-color: #282828;
+      color: #dcdcdc;
+    }
+
+    .column {
+      flex-grow: 1;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .control {
+      flex-grow: 1;
+      display: flex;
+      padding: 1em 0;
+    }
+
+    .control input {
+      flex-grow: 1;
+    }
+
+    input[type=range][orient=vertical] {
+      -webkit-appearance: slider-vertical;
+    }
+
+    .label {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      height: 2.5em;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    button.label {
+      color: inherit;
+      font-size: inherit;
+      border: none;
+    }
+
+    .label .hint {
+      font-size: 0.5em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="column">
+    <div class="control">
+      <input type="range" min="-1" max="1" value="0" step="any" id="slider:pitch" orient="vertical">
+    </div>
+    <button type="button" class="label" id="label:pitch">
+      Pitch
+      <div class="hint">tap to reset</div>
+    </button>
+  </div>
+  <div class="column">
+    <div class="control">
+      <input type="range" min="0" max="1" value="0.5" step="any" id="slider:yaw">
+    </div>
+    <div class="label">Yaw</div>
+  </div>
+  <div class="column">
+    <div class="control">
+      <input type="range" min="0" max="1" value="0" step="any" id="slider:power" orient="vertical">
+    </div>
+    <div class="label">Power</div>
+  </div>
+</body>
+
+</html>
