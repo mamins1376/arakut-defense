@@ -21,8 +21,10 @@ class Controller {
     }
 
     const pitch = document.getElementById('slider:pitch');
-    document.getElementById('label:pitch')
-      .addEventListener('click', () => pitch.value = 0);
+    document.getElementById('label:pitch').addEventListener('click', () => {
+      pitch.value = 0;
+      this.read(pitch);
+    });
 
     /*
     const yaw = document.getElementById('slider:yaw');

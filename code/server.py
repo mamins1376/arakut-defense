@@ -1,35 +1,32 @@
 import uasyncio
 import hashlib
 import ubinascii
-from machine import Pin, PWM
-
-motor_freq = 500
-motor_left = PWM(Pin(15), freq=motor_freq)
-motor_right = PWM(Pin(13), freq=motor_freq)
-motor_back = PWM(Pin(12), freq=motor_freq)
 
 
 class Server:
-    @classmethod
-    def main(cls):
-        uasyncio.run(cls.listen())
+    def start(self):
+        uasyncio.run(self.listen())
 
-    @classmethod
-    async def listen(cls):
+    async def listen(self):
         host = '192.168.4.1'
         print('listening on http://%s:80' % host)
-        server = await uasyncio.start_server(cls.accept, host, 80)
+        server = await uasyncio.start_server(self.accept, host, 80)
         await server.wait_closed()
 
-    @classmethod
-    async def accept(cls, reader, writer):
+    async def accept(self, reader, writer):
         print('connection accepted')
-        await cls(reader, writer).talk()
+        await Request(reader, writer, self).talk()
         print('connection closed')
 
-    def __init__(self, reader, writer):
+    def message(self, message):
+        raise NotImplementeddError()
+
+
+class Request:
+    def __init__(self, reader, writer, server):
         self.reader = reader
         self.writer = writer
+        self.server = server
         self.mime = b'application/octet-stream'
 
     async def talk(self):
@@ -84,10 +81,7 @@ class Server:
             else:
                 mesg = await self.reader.readexactly(pl)
 
-            if pl == 3:
-                left, right, back = mesg
-                motor_left.duty(left << 2)
-                motor_right.duty(right << 2)
+            self.server.message(mesg)
 
         await self.writer.wait_closed()
 

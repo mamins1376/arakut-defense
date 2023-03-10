@@ -9,7 +9,7 @@ import gc
 gc.collect()
 
 try:
-    from server import Server
-    Server.main()
+    from app import App
+    App().start()
 except ImportError:
-    print('failed to import server module')
+    print('failed to import app module')
